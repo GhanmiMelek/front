@@ -1,0 +1,96 @@
+
+<app-adminheader></app-adminheader>
+<app-sidebar1></app-sidebar1>
+<div class="pagetitle">
+    <h1>Profile</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admindash">Accueil</a></li>
+        <li class="breadcrumb-item">Profile</li>
+        <li class="breadcrumb-item active">Profile</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  
+<div class="container-xl px-4 mt-4">
+  
+  <hr class="mt-0 mb-4">
+  <div class="row">
+      <div class="col-xl-4">
+          <!-- Profile picture card-->
+          <div class="card mb-4 mb-xl-0">
+              <div class="card-header">Photo de profil</div>
+              <div class="card-body text-center">
+                  <!-- Profile picture image-->
+                  <img *ngIf="profile_picture" [src]="profile_picture" alt="Uploaded image">
+                  <!-- Profile picture help block-->
+                  <div class="form-group">
+                    <div class="profile-pic-container">
+                      <img [src]="profilePictureUrl" alt="profile picture">
+                    </div>
+                    <input type="file" (change)="onSelectFile($event)" class="form-control-file" accept="fr">
+                    <BR>
+                    <button (click)="changeProfilePic()" class="btn btn-primary">Modifier</button>
+                  </div>
+            </div>
+      </div>
+      
+      <div class="col-xl-8">
+          <!-- Account details card-->
+          <div class="card mb-4">
+            
+              <div class="card-header" >Détails du compte </div>
+              <div class="donnee">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td><i class="bi bi-person"></i></td>
+                      <td>Nom d'utilisateur</td>
+                      <td>{{username}}</td>
+                    </tr>
+                    <tr>
+                      <td><i class="bi bi-envelope"></i></td>
+                      <td>Email</td>
+                      <td>{{email}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>          
+              <div class="card-body">
+                  <form #updateform="ngForm" (ngSubmit)="updateform.form.valid && onupdateuser(updateform) ">
+                      <!-- Form Group (username)-->
+                      <div class="col-md-6">
+                          <label class="small mb-1" for="inputUsername">Nom d'utilisateur :</label>
+                          <input class="form-control" name="username" type="text" placeholder="Entrez votre nom d'utilisateur.  " ngModel="{{edituser.username}}">
+                      </div>
+                   <br>
+                   <br>
+                      <div class="row gx-3 mb-3">
+                          <!-- Form Group (organization name)-->
+                          <div class="mb-3">
+                              <label class="small mb-1" for="inputOrgName">Email</label>
+                              <input class="form-control" required email name="email"  placeholder="Entrez votre email"[ngClass]="{ 'is-invalid': updateform.submitted && email.errors }"  type="text"  ngModel="{{edituser.email}}">
+                              <div *ngIf="email.errors && updateform.submitted" class="invalid-feedback">
+                                  <div *ngIf="email.errors['required']">L'email est obligatoire</div>
+                                  <div *ngIf="email.errors['email']">
+                                    Email doit être une adresse email valide
+                                  </div>
+                              </div>
+                          </div>    
+                      </div>
+                      <div class="col-md-6">
+                        <label class="small mb-1" for="inputPassword">Mot de passe :</label>
+                        <input class="form-control" name="password" type="text" placeholder="Entrez votre mot de passe" ngModel="{{edituser.password}}">
+                    </div>
+                    <br>
+                      <!-- Save changes button-->
+                      <button class="btn btn-primary" type="submit">Enregistrer les modifications </button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+

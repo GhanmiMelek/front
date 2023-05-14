@@ -1,0 +1,88 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="pagetitle">
+  <h1>Profile</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/admindash">Home</a></li>
+      <li class="breadcrumb-item">Profile</li>
+      <li class="breadcrumb-item active">Profile</li>
+    </ol>
+  </nav>
+</div><!-- End Page Title -->
+<div class="container-xl px-4 mt-4">
+<hr class="mt-0 mb-4">
+<div class="row">
+    <div class="col-xl-4">
+        <!-- Profile picture card-->
+        <div class="card mb-4 mb-xl-0">
+            <div class="card-header">Photo de profil</div>
+            <div class="card-body text-center">
+                <!-- Profile picture image-->
+                <img *ngIf="profile_picture" [src]="profile_picture" alt="Uploaded image" >
+                <!-- Profile picture help block-->
+                <div class="form-group">
+                  <div class="profile-pic-container">
+                    <img [src]="profilePictureUrl" alt="profile picture" alt="Profile" class="rounded-circle">
+                  </div>
+                  <input type='file' (change)="onSelectFile($event)" class="form-control-file"><BR><BR>
+                  <button (click)="changeProfilePic()" class="btn btn-primary">Upload</button>
+                </div>
+          </div>
+         
+    </div>
+    <div class="col-xl-8">
+        <!-- Account details card-->
+        <div class="card mb-4">
+            <div class="card-header">Détails du compte </div>
+            <div class="donnee">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><i class="bi bi-person"></i></td>
+                    <td>Nom d'utilisateur</td>
+                    <td>{{username}}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="bi bi-envelope"></i></td>
+                    <td>Email</td>
+                    <td>{{email}}</td>
+                  </tr> 
+                </tbody>
+              </table>
+            </div>       
+            <div class="card-body">
+                <form #updateform="ngForm" (ngSubmit)="updateform.form.valid && onupdateuser(updateform) ">
+                    <!-- Form Group (username)-->
+                    <div class="col-md-6">
+                        <label class="small mb-1" for="inputUsername">Username :</label>
+                        <input class="form-control" name="username" type="text" placeholder="Enter your username" ngModel="{{edituser.username}}">
+                    </div>
+                    <!-- <button class="btn btn-primary" type="submit">Save username</button> -->
+                    
+                    <div class="row gx-3 mb-3">
+                        <!-- Form Group (organization name)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputOrgName">Email</label>
+                            <input class="form-control" required email name="email"  placeholder="Enter your email"[ngClass]="{ 'is-invalid': updateform.submitted && email.errors }"  type="text"  ngModel="{{edituser.email}}">
+                            <div *ngIf="email.errors && updateform.submitted" class="invalid-feedback">
+                                <div *ngIf="email.errors['required']">Email is required</div>
+                                <div *ngIf="email.errors['email']">
+                                  Email must be a valid email address
+                                </div>
+                            </div>
+                            <!-- <button class="btn btn-primary" type="submit" >Save email</button> -->
+                        </div>    
+                    </div>
+                    <div class="col-md-6">
+                      <label class="small mb-1" for="inputPassword">Password :</label>
+                      <input class="form-control" name="password" type="text" placeholder="Enter your password" ngModel="{{edituser.password}}">
+                  </div>
+                    <!-- Save changes button-->
+                    <button class="btn btn-primary" type="submit" >Save password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

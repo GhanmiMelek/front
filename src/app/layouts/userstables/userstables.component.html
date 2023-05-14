@@ -1,0 +1,66 @@
+<app-adminheader></app-adminheader>
+  <app-sidebar1></app-sidebar1>
+  <div class="pagetitle">
+    <h1>Table des utilisateurs</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admindash">Accueil</a></li>
+        <li class="breadcrumb-item">Table des utilisateurs</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+  <div class="lol">
+<table >
+<thead>
+  <tr>
+      <th>Id</th>
+      <th>Nom d'utilisateur</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Role</th>
+      <th>Action</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let users of UsersArray">
+      <td>{{users.id}}</td>
+      <td>{{users.username}}</td>
+      <td>{{users.email}}</td>
+      <td>{{users.Age}}</td>
+      <td>{{users.Role}}</td>
+      <td>
+      <button (click)="deleteUser(users.id)">Supprimer</button>
+
+      <button (click)="showUpdate(users)">Modifier</button>
+      
+      </td>
+      
+  </tr>
+</tbody>
+</table>
+  </div>
+    <!-- your form here -->
+  <div *ngIf="showUpdateForm">
+    <form (ngSubmit)="updateAdmin()" #updateForm class="update-form">
+      <h2>Modification du compte</h2>
+      <label for="username"><i class="fas fa-user"></i> Nom d'utilisateur:</label>
+      <input type="text" name="username" [(ngModel)]="selectedUser.username">
+      <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+      <input type="email" name="email" [(ngModel)]="selectedUser.email">
+      <label for="age"><i class="fas fa-birthday-cake"></i> Age:</label>
+      <input type="number" name="age" [(ngModel)]="selectedUser.Age">
+      <label for="role"><i class="fas fa-users"></i> Role:</label>
+      <select name="Role" [(ngModel)]="selectedUser.Role">
+        <option value="USER">USER</option>
+        <option value="ADMIN">ADMIN</option>
+      </select>  
+      <button type="submit">Modifier</button> 
+      <button type="button" (click)="cancelUpdate()">Annuler</button>
+      
+    </form>
+  </div>
+   
+    
+  
+  
+
