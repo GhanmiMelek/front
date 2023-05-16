@@ -32,6 +32,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ContacttableComponent } from './layouts/contacttable/contacttable.component';
 import { ChartComponent } from './layouts/chart/chart.component';
 import { AdminchartComponent } from './layouts/adminchart/adminchart.component';
+import { AffiliationuserComponent } from './layouts/affiliationuser/affiliationuser.component';
+import { CreditsuserComponent } from './layouts/creditsuser/creditsuser.component';
+import { PensionsuserComponent } from './layouts/pensionsuser/pensionsuser.component';
+import { PrestationsdesoutienuserComponent } from './layouts/prestationsdesoutienuser/prestationsdesoutienuser.component';
 
 
 
@@ -57,7 +61,11 @@ import { AdminchartComponent } from './layouts/adminchart/adminchart.component';
     ContectadminComponent,
     ContacttableComponent,
     ChartComponent,
-    AdminchartComponent
+    AdminchartComponent,
+    AffiliationuserComponent,
+    CreditsuserComponent,
+    PensionsuserComponent,
+    PrestationsdesoutienuserComponent
   ],
   imports: [
     BrowserModule,

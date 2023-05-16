@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 import { response } from 'express';
 import Swal from 'sweetalert2';
+import { ImagesService } from 'src/app/services/images/images.service';
 
 @Component({
   selector: 'app-header',
@@ -15,19 +16,43 @@ export class HeaderComponent {
   constructor(
     private service: AuthService,
     private router: Router,
-    private storageService:StorageService) {
+    private storageService:StorageService,
+    private imagesService: ImagesService) {
       
 
   }
   isLoggedIn = false;
+  profilePictureUrl:string = "../assets/img/defaultpicture.jpg"
+  currentUser: any ={}
   iduser ?:number ;
   username?: any;
   Role?:any;
+
    ngOnInit(): void {
 
     this.username=sessionStorage.getItem('username')
     this.Role=sessionStorage.getItem('Role')
 
+    this.service.getuserbyid(sessionStorage.getItem('userId'))
+    .subscribe(
+      (response:any)=>{
+        this.currentUser=response.data[0]
+        console.log(this.currentUser)
+        if (this.currentUser.profile_picture){
+          this.imagesService.GetImageByName(this.currentUser.profile_picture)
+          .subscribe(
+            (response:any) => {
+              const reader = new FileReader();
+              reader.readAsDataURL(response);
+              reader.onloadend = () => {
+                this.profilePictureUrl = reader.result as string; // save the image URL to a property on the post object
+              };
+            }
+          )
+        }
+        
+      }
+    )
 }
 
   toggle() {

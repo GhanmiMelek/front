@@ -20,6 +20,10 @@ import { ContectadminComponent } from './layouts/contectadmin/contectadmin.compo
 import { ContacttableComponent } from './layouts/contacttable/contacttable.component';
 import { ChartComponent } from './layouts/chart/chart.component';
 import { AdminchartComponent } from './layouts/adminchart/adminchart.component';
+import { AffiliationuserComponent } from './layouts/affiliationuser/affiliationuser.component';
+import { CreditsuserComponent } from './layouts/creditsuser/creditsuser.component';
+import { PrestationsdesoutienuserComponent } from './layouts/prestationsdesoutienuser/prestationsdesoutienuser.component';
+import { PensionsuserComponent } from './layouts/pensionsuser/pensionsuser.component';
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -40,7 +44,11 @@ const routes: Routes = [
   { path: 'Contactadmin', component: ContectadminComponent },
   { path: 'contacttable', component: ContacttableComponent },
   { path: 'chart', component: ChartComponent },
-  { path: 'adminchart', component: AdminchartComponent }
+  { path: 'adminchart', component: AdminchartComponent },
+  { path: 'Affiliationuser', component: AffiliationuserComponent },
+  { path: 'Pensionsuser', component: PensionsuserComponent },
+  { path: 'Creditsuser', component: CreditsuserComponent },
+  { path: 'Prestationsdesoutienuser', component: PrestationsdesoutienuserComponent }
  
 
 

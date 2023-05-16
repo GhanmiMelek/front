@@ -20,7 +20,7 @@ export class AdminheaderComponent {
   }
 
   isLoggedIn = false;
-  profilePictureUrl:string = "assets/img/logo1.jpg"
+  profilePictureUrl:string = "../assets/img/defaultpicture.jpg"
   currentUser: any ={}
   iduser ?:number ;
   username?: any;

@@ -36,7 +36,7 @@ export class AdminprofileComponent {
 
   //aziz ktebhom
   selectedFiles: File[] = [];
-  profilePictureUrl:string = "assets/img/logo1.jpg"
+  profilePictureUrl:string = "assets/img/defaultpicture.jpg"
   currentUser: any ={}
   username?: any;
   email?:any;

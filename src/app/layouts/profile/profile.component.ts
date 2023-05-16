@@ -37,7 +37,7 @@ export class ProfileComponent {
 
   //aziz ktebhom
   selectedFiles: File[] = [];
-  profilePictureUrl:string = ""
+  profilePictureUrl:string = "assets/img/defaultpicture.jpg"
   currentUser: any ={}
   username?: any;
   email?:any;
@@ -125,14 +125,26 @@ export class ProfileComponent {
           const data = {
             profile_picture : fileName
           }
+          Swal.fire({
+            icon: 'success',
+            title: 'Votre photo a été mis a jour',
+            showConfirmButton: false,
+            timer: 1500
+          })
           this.service.updateProfilPicture(sessionStorage.getItem('userId'),data)
           .subscribe(
             (response:any) => {
               console.log(response.message)
-            }
+              Swal.fire({
+                icon: 'success',
+                title: 'Votre photo a été mis a jour',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              
+            }       
           )
-
-
+          location.reload(); // reload the page after successful update
         }
 
       )

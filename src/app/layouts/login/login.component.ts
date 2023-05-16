@@ -19,7 +19,7 @@ export class LoginComponent {
   users: any[] = [];
 
   loginform = this.builder.group({
-    email: this.builder.control('', [Validators.required, Validators.email]),
+    email: this.builder.control('', Validators.required),
     password: this.builder.control('', Validators.required)
   });
 
