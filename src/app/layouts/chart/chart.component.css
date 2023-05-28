@@ -1,35 +1,34 @@
 body{
-    margin: auto;
-    padding: 0%;
+  margin: auto;
+  padding: 0%;
+}
+.pagetitle {
+    margin-left: 23%;
+    margin-top: 5%;
+    border-bottom: 1px solid rgba(177, 177, 177, 0.623);
+
   }
-  .pagetitle {
-      margin-left: 21.5%;
-      margin-top: 5%;
-      border-bottom: 1px solid rgba(177, 177, 177, 0.623);
   
-    }
+  .pagetitle h1 {
+    font-size: 24px;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #012970;
+  }
+  .para-stat {
+    font-weight: bold;
+    margin-left: 23%;
+    border-bottom: 1px solid rgba(177, 177, 177, 0.623);
+  }
+  .bi{
+    position: relative;
+    margin-left: 22%;
     
-    .pagetitle h1 {
-      font-size: 24px;
-      margin-bottom: 0;
-      font-weight: 600;
-      color: #012970;
-    }
-    .para-stat {
-      font-weight: bold;
-      margin-left: 21.5%;
-      border-bottom: 1px solid rgba(177, 177, 177, 0.623);
-    }
-    .bi{
-      position: relative;
-      margin-left: 17%;
-      
-  
+
+}
+  iframe {
+    margin-top: 1%;
+    border: none;
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
   }
-    iframe {
-      margin-top: 1%;
-      border: none;
-      box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
-      border-radius: 5px;
-    }
-  

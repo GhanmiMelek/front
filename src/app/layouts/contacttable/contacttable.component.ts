@@ -3,10 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
+import { contactService } from 'src/app/services/contacts/contact.service';
 
 @Component({
   selector: 'app-contacttable',
@@ -17,8 +15,13 @@ export class ContacttableComponent {
   UsersArray: any[] = [];
   isResultLoaded = false;
   selectedUser: any = {};
-  constructor(private http: HttpClient,private service: AuthService) {this.getAllUsers();}
+  isResolved: boolean = false;
+  contacts: any;
 
+
+  constructor(private http: HttpClient,private service: contactService) {this.getAllUsers();}
+
+  
   getAllUsers() {
     this.service.message()
       .subscribe((resultData: any) => {
@@ -26,6 +29,24 @@ export class ContacttableComponent {
         console.log(resultData.data);
         this.UsersArray = resultData.data;
       });
+  }
+ 
+  resolveContact(contactId: any) {
+    const user = this.UsersArray.find((u: any) => u.id === contactId);
+    if (user) {
+      this.service.resolve(contactId, user).subscribe(
+        () => {
+          // Update the resolved state and button color in your local contacts array
+          user.resolved = true;
+        },
+        error => {
+          console.log(error);
+          // Handle error if needed
+        }
+      );
+      location.reload(); // reload the page after successful update
+
+    }
   }
   deleteMessage(userId: number) {
     this.service.deletemessage(userId)
@@ -41,11 +62,8 @@ export class ContacttableComponent {
           this.getAllUsers()
         },(error: HttpErrorResponse) =>
         alert(error.message)
-    );
-      
-     
+    );  
   }
- 
-  
 
 }
+

@@ -18,7 +18,7 @@ export class RegisterComponent {
   }
   users: any[] = [];
 
-  registerform = this.builder.group({
+    registerform = this.builder.group({
     username: this.builder.control('', Validators.required),
     email: this.builder.control('', [Validators.required, Validators.email]),
     password: this.builder.control('', Validators.required),
@@ -33,9 +33,9 @@ export class RegisterComponent {
           {
             Swal.fire({
               icon: 'success',
-              title: 'Inscription réussie',
+              title: 'e-mail de vérification a été envoyé avec succès',
               showConfirmButton: false,
-              timer: 1000
+              timer: 2500
             })
     
           }
@@ -46,7 +46,7 @@ export class RegisterComponent {
           sessionStorage.setItem('Age',response.data.Age)
           sessionStorage.setItem('Role', response.data.Role)
 
-          this.router.navigate(['dashbord'])
+          this.router.navigate(['/verifyemail'])
         },
         (error: any) => {
           console.error(error)

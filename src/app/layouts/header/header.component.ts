@@ -73,7 +73,7 @@ export class HeaderComponent {
           })
   
         }
-        this.router.navigate(['login'])
+        this.router.navigate(['home'])
        
         // navigate to the login page after successful logout
       },

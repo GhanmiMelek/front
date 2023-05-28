@@ -19,6 +19,7 @@
       <th>Numéro</th>
       <th>Objet</th>
       <th>Message</th>
+      <th>Action</th>
   </tr>
 </thead>
 <tbody>
@@ -30,10 +31,18 @@
       <td>{{contacts.subject}}</td>
       <td>{{contacts.message}}</td>
       <td>
-      <button (click)="deleteMessage(contacts.id)">Supprimer</button>
-      
-      </td>
-      
+      <button class="reply-button">
+        <i class="fa fa-reply"></i>
+      </button>
+      <button *ngIf="contacts.resolved === 0" (click)="resolveContact(contacts.id)">
+        <i class="fa fa-check"></i>
+      </button>
+      <button *ngIf="contacts.resolved === 1" style="background-color: green; cursor: default;" disabled>
+        <i class="fa fa-check"></i>
+      </button>
+      <button (click)="deleteMessage(contacts.id)"> <i class="fa fa-trash"></i> 
+      </button>
+    </td>
   </tr>
 </tbody>
 </table>

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { contactService } from 'src/app/services/contacts/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -23,7 +24,7 @@ export class ContactComponent {
   message!: string ;
 
 
-  constructor(private builder: FormBuilder,private http: HttpClient,private service: AuthService) {}
+  constructor(private builder: FormBuilder,private http: HttpClient,private service: contactService) {}
 
   send() {
     this.loading = true;

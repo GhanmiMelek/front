@@ -71,7 +71,7 @@ export class AdminheaderComponent {
           })
   
         }
-        this.router.navigate(['login'])
+        this.router.navigate(['home'])
         console.log('Logged out successfully.' );
         // navigate to the login page after successful logout
       },

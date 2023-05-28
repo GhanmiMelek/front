@@ -34,6 +34,11 @@ export class AuthService {
   registerAdmin(inputdata:any) {
     return this.http.post(this.apiurl+'/auth/registerAdmin',inputdata);
   }
+  
+  verifyEmail(email: string): Observable<any> {
+    const url = `${this.apiurl}/verifyemail?email=${email}`;
+    return this.http.get<any>(url);
+  }
   Login(inputdata: any) {
     return this.http.post(`${this.apiurl}/auth/login`, inputdata);
   }
@@ -70,15 +75,4 @@ export class AuthService {
   {
    return this.http.put(`${this.apiurl}/users/updateadmin/${id}`,user);
  }
-
- 
-message(): Observable<any> {
-  return this.http.get(`${this.apiurl}/contact`);
-}
-deletemessage(id: any): Observable<any> {
-  return this.http.delete(`${this.apiurl}/contact/delete/${id}`);
-}
-submitMessage(contact:contact) {
-  return this.http.post(`${this.apiurl}/contact`,contact);
-}
 }

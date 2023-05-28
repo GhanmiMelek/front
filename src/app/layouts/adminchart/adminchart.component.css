@@ -3,7 +3,7 @@ body{
   padding: 0%;
 }
 .pagetitle {
-    margin-left: 21.5%;
+    margin-left: 23%;
     margin-top: 5%;
     border-bottom: 1px solid rgba(177, 177, 177, 0.623);
 
@@ -17,12 +17,12 @@ body{
   }
   .para-stat {
     font-weight: bold;
-    margin-left: 21.5%;
+    margin-left: 23%;
     border-bottom: 1px solid rgba(177, 177, 177, 0.623);
   }
   .bi{
     position: relative;
-    margin-left: 17%;
+    margin-left: 22%;
     
 
 }

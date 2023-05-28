@@ -10,20 +10,18 @@ import { AdmindashComponent } from './layouts/admindash/admindash.component';
 import { Sidebar1Component } from './layouts/sidebar1/sidebar1.component';
 import { ContactComponent } from './layouts/contact/contact.component';
 import { UserstablesComponent } from './layouts/userstables/userstables.component';
-import { AffiliationComponent } from './layouts/affiliation/affiliation.component';
-import { PensionsComponent } from './layouts/pensions/pensions.component';
-import { CreditsComponent } from './layouts/credits/credits.component';
-import { PrestationsdesoutienComponent } from './layouts/prestationsdesoutien/prestationsdesoutien.component';
 import { AdminheaderComponent } from './layouts/adminheader/adminheader.component';
 import { AdminprofileComponent } from './layouts/adminprofile/adminprofile.component';
 import { ContectadminComponent } from './layouts/contectadmin/contectadmin.component';
 import { ContacttableComponent } from './layouts/contacttable/contacttable.component';
 import { ChartComponent } from './layouts/chart/chart.component';
 import { AdminchartComponent } from './layouts/adminchart/adminchart.component';
-import { AffiliationuserComponent } from './layouts/affiliationuser/affiliationuser.component';
-import { CreditsuserComponent } from './layouts/creditsuser/creditsuser.component';
-import { PrestationsdesoutienuserComponent } from './layouts/prestationsdesoutienuser/prestationsdesoutienuser.component';
-import { PensionsuserComponent } from './layouts/pensionsuser/pensionsuser.component';
+import { HomeComponent } from './layouts/home/home.component';
+import { VerifyemailComponent } from './layouts/verifyemail/verifyemail.component';
+import { RHComponent } from './layouts/rh/rh.component';
+import { FinanceComponent } from './layouts/finance/finance.component';
+import { AffiliationComponent } from './layouts/affiliation/affiliation.component';
+
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -35,20 +33,18 @@ const routes: Routes = [
   { path: 'sidebar1', component: Sidebar1Component },
   { path: 'contact', component: ContactComponent },
   { path: 'userstables', component: UserstablesComponent },
-  { path: 'Affiliation', component: AffiliationComponent },
-  { path: 'Pensions', component: PensionsComponent },
-  { path: 'Credits', component: CreditsComponent },
-  { path: 'Prestationsdesoutien', component: PrestationsdesoutienComponent },
   { path: 'adminheader', component: AdminheaderComponent },
   { path: 'adminprofile', component: AdminprofileComponent },
   { path: 'Contactadmin', component: ContectadminComponent },
   { path: 'contacttable', component: ContacttableComponent },
   { path: 'chart', component: ChartComponent },
   { path: 'adminchart', component: AdminchartComponent },
-  { path: 'Affiliationuser', component: AffiliationuserComponent },
-  { path: 'Pensionsuser', component: PensionsuserComponent },
-  { path: 'Creditsuser', component: CreditsuserComponent },
-  { path: 'Prestationsdesoutienuser', component: PrestationsdesoutienuserComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'verifyemail', component: VerifyemailComponent },
+  { path: 'RH', component: RHComponent },
+  { path: 'finance', component: FinanceComponent },
+  { path: 'affiliation', component: AffiliationComponent }
+
  
 
 

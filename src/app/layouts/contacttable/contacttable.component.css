@@ -17,8 +17,8 @@
   
   table {
     border-collapse: collapse;
-    width: 79%;
-    margin-left: 20%;
+    width: 78%;
+    margin-left: 22%;
     
   }
   
@@ -46,7 +46,7 @@
   button {
     padding: 8px 12px;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: #005eff;
     color: white;
     border: none;
     cursor: pointer;
@@ -54,9 +54,16 @@
   }
   
   button:hover {
-    background-color: #0069d9;
+    background-color: #dc3545;
   }
-
+  .delete-button i {
+    margin-right: 5px; /* Add some space between the icon and the text */
+  }
+  
+  
+  
+  
+  
   
   
  
