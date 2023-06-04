@@ -18,7 +18,6 @@ import { ContactComponent } from './layouts/contact/contact.component';
 import { UserstablesComponent } from './layouts/userstables/userstables.component';
 import { AdminheaderComponent } from './layouts/adminheader/adminheader.component';
 import { AdminprofileComponent } from './layouts/adminprofile/adminprofile.component';
-import { ContectadminComponent } from './layouts/contectadmin/contectadmin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
@@ -26,8 +25,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ContacttableComponent } from './layouts/contacttable/contacttable.component';
-import { ChartComponent } from './layouts/chart/chart.component';
-import { AdminchartComponent } from './layouts/adminchart/adminchart.component';
 import { HomeComponent } from './layouts/home/home.component';
 import { VerifyemailComponent } from './layouts/verifyemail/verifyemail.component';
 import { RHComponent } from './layouts/rh/rh.component';
@@ -54,10 +51,7 @@ import { RHadminComponent } from './layouts/rhadmin/rhadmin.component';
     UserstablesComponent,
     AdminheaderComponent,
     AdminprofileComponent,
-    ContectadminComponent,
     ContacttableComponent,
-    ChartComponent,
-    AdminchartComponent,
     HomeComponent,
     VerifyemailComponent,
     RHComponent,

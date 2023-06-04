@@ -1,0 +1,31 @@
+body{
+  margin: auto;
+  padding: 0%;
+}
+.pagetitle {
+  margin-left: 24%;
+  margin-top: 6%;
+}
+
+.pagetitle h1 {
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #012970;
+}
+.bi{
+  position: relative;
+  margin-left: 21.9%;
+
+}
+iframe {
+  margin-top: 2%;
+  border: none;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.233);
+  border-radius: 5px;
+
+}
+
+
+
+

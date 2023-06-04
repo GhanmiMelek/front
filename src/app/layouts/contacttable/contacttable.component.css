@@ -14,13 +14,20 @@
     margin-top: 6%;
 }
 
-  
   table {
     border-collapse: collapse;
     width: 78%;
     margin-left: 22%;
     
   }
+
+  
+  @media (max-width: 1200px) {
+    table {
+      color: #005eff;
+    }
+  }
+  
   
   th, td {
     
@@ -59,6 +66,9 @@
   .delete-button i {
     margin-right: 5px; /* Add some space between the icon and the text */
   }
+  
+
+  
   
   
   

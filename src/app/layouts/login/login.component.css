@@ -32,15 +32,37 @@
     margin: 0 auto;
     padding: 0 20px;
   }
-  /* Footer Styles */
+
+/* Footer Styles */
 footer {
   background-color: #012970;
   color: #ffffff;
-  padding: 20px;
+  padding: 12px;
   text-align: center;
 }
 
 footer p {
-  font-size: 14px;
+  font-size: 15px;
   margin: 0;
+}
+.card {
+  --bs-card-spacer-y: 1rem;
+  --bs-card-spacer-x: 1rem;
+  --bs-card-border-width: 0px;
+}
+.info-box {
+  margin-bottom: 7px;
+  background-color: #012970;
+  padding: 12px;
+  text-align: center;
+  margin-right: 6px;
+}
+.info-box i {
+  font-size: 17px;
+  margin-bottom: 3px;
+  color: #ffffff;
+  margin-left: 2px;
+}
+.info-box p {
+  color: #ffffff;
 }

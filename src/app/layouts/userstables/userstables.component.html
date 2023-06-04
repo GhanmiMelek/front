@@ -10,18 +10,18 @@
     </nav>
   </div><!-- End Page Title -->
   <div class="lol">
-<table >
-<thead>
-  <tr>
-      <th>Id</th>
-      <th>Nom d'utilisateur</th>
-      <th>Email</th>
-      <th>Age</th>
-      <th>Role</th>
-      <th>Action</th>
-  </tr>
-</thead>
-<tbody>
+    <table >
+      <thead>
+               <tr>
+                    <th>Id</th>
+                    <th>Nom d'utilisateur</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                      </tr>
+      </thead>
+  <tbody>
   <tr *ngFor="let users of UsersArray">
       <td>{{users.id}}</td>
       <td>{{users.username}}</td>
@@ -29,9 +29,9 @@
       <td>{{users.Age}}</td>
       <td>{{users.Role}}</td>
       <td>
-      <button (click)="deleteUser(users.id)">Supprimer</button>
+      <button (click)="deleteUser(users.id)"><i class="fa fa-trash"></i> </button>
 
-      <button (click)="showUpdate(users)">Modifier</button>
+      <button (click)="showUpdate(users)" class="edit-button"><i class="fas fa-edit" ></i></button>
       
       </td>
       

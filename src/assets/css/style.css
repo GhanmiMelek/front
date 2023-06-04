@@ -602,7 +602,7 @@ h6 {
   top: 60px;
   left: 0;
   bottom: 0;
-  width: 300px;
+  width: 280px;
   z-index: 996;
   transition: all 0.3s;
   padding: 20px;
@@ -610,10 +610,10 @@ h6 {
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1100px) {
   .sidebar {
     left: -300px;
   }

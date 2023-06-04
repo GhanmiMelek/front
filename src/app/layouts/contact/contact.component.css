@@ -5,3 +5,31 @@
     font-weight: 600;
     color: #012970;
   }
+  .section.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65vh;
+  }
+ 
+  
+  .php-email-form {
+    text-align: center;
+  }
+  
+  .php-email-form .row {
+    justify-content: center;
+  }
+  
+  .php-email-form input,
+  .php-email-form textarea {
+    width: 100%;
+  }
+  
+  .php-email-form button[type="submit"] {
+    margin-top: 10px;
+  }
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  

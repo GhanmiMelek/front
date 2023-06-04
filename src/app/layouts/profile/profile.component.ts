@@ -12,12 +12,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ImagesService } from 'src/app/services/images/images.service';
 
 export class User {
-  id!: number;
-  username!: string;
-  email!:string;
-  password!: string;
-  profile_picture!: string;
- }
+  id!: number; // Represents the user ID
+  username!: string; // Represents the username
+  email!: string; // Represents the email address of the user
+  password!: string; // Represents the password of the user
+  profile_picture!: string; // Represents the file name of the user's profile picture
+}
+
 @Component({
   selector: 'app-profile',
   templateUrl:'./profile.component.html',
@@ -25,133 +26,152 @@ export class User {
 })
 
 export class ProfileComponent {
-  public edituser: User =new User();
-  public imageUrl!: string;
+  public edituser: User = new User(); // Represents the user being edited
+  public imageUrl!: string; // Represents the URL of the user's profile picture
 
-  isLoggedIn = false;
-  id!: number ;
-  password: string = "";
-  message = '';
-  profile_picture!:string;
-  fileInfos?: Observable<any>;
+  isLoggedIn = false; // Indicates whether the user is logged in
+  id!: number; // Represents the user ID
+  password: string = ""; // Represents the user's password
+  message = ''; // A message string used for displaying messages
+  profile_picture!: string; // Represents the file name of the user's profile picture
+  fileInfos?: Observable<any>; // Represents file information
 
-  //aziz ktebhom
-  selectedFiles: File[] = [];
-  profilePictureUrl:string = "assets/img/defaultpicture.jpg"
-  currentUser: any ={}
-  username?: any;
-  email?:any;
- 
+  selectedFiles: File[] = []; // Represents the selected files for upload
+  profilePictureUrl: string = "assets/img/defaultpicture.jpg"; // Represents the URL of the default profile picture
+  currentUser: any = {}; // Represents the current user
+  username?: any; // Represents the username
+  email?: any; // Represents the email address
 
-  constructor(private router: Router,
-    private storageService: StorageService,
-    private service: AuthService,
-    private fb: FormBuilder,
-    private imagesService:ImagesService) { }
-
+  constructor(
+    private router: Router, // Injecting the Router service
+    private storageService: StorageService, // Injecting the StorageService
+    private service: AuthService, // Injecting the AuthService
+    private fb: FormBuilder, // Injecting the FormBuilder
+    private imagesService: ImagesService // Injecting the ImagesService
+  ) {}
+  
   ngOnInit(): void {
-    
-    this.username=sessionStorage.getItem('username')
-    this.email=sessionStorage.getItem('email')
-   
-    
+    this.username = sessionStorage.getItem('username'); // Retrieve the username from session storage
+    this.email = sessionStorage.getItem('email'); // Retrieve the email from session storage
+  
+    // Check if the user is logged in
     this.isLoggedIn = this.storageService.isLoggedIn();
+  
     if (this.isLoggedIn) {
+      // If the user is logged in, retrieve the user object from storage
       const user = this.storageService.getUser();
-      this.edituser.id=user.id;
-      console.log(this.edituser.id)
-      this.service.getuserbyid(user.id).subscribe({ 
-        next:data => {
-          console.log("ce user est ",data)
-          this.edituser.id=data.id;
-          this.edituser.username=data.username;
-          this.edituser.email=data.email;
-          this.edituser.password=data.password;
-          this.edituser.profile_picture=data.profile_picture
-        },error:err => {
-          console.log(err)
+      // Set the user's ID in the edituser object
+      this.edituser.id = user.id;
+      console.log(this.edituser.id);
+    
+      // Fetch user details using the user's ID
+      this.service.getuserbyid(user.id).subscribe({
+        next: (data) => {
+          console.log("ce user est ", data);
+    
+          // Update the edituser object with the fetched user details
+          this.edituser.id = data.id;
+          this.edituser.username = data.username;
+          this.edituser.email = data.email;
+          this.edituser.password = data.password;
+          this.edituser.profile_picture = data.profile_picture;
+        },
+        error: (err) => {
+          console.log(err);
         }
       });
-      this.id=user.id;
+    
+      // Set the current user's details
+      this.id = user.id;
       this.username = user.username;
       this.email = user.email;
       this.password = user.password;
-    }
-    else{
+    } else {
+      // If the user is not logged in, navigate to the adminprofile page
       this.router.navigate(['/profile']);
     }
-    this.service.getuserbyid(sessionStorage.getItem('userId'))
-    .subscribe(
-      (response:any)=>{
-        this.currentUser=response.data[0]
-        console.log(this.currentUser)
-        this.imagesService.GetImageByName(this.currentUser.profile_picture)
-        .subscribe(
-          (response:any) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(response);
-            reader.onloadend = () => {
-              this.profilePictureUrl = reader.result as string; // save the image URL to a property on the post object
-            };
-          }
-        )
+    // Fetch the current user's details using their user ID
+    this.service.getuserbyid(sessionStorage.getItem('userId')).subscribe(
+      (response: any) => {
+        this.currentUser = response.data[0];
+        console.log(this.currentUser);
+  
+        if (this.currentUser.profile_picture) {
+          // If the current user has a profile picture, fetch it
+          this.imagesService.GetImageByName(this.currentUser.profile_picture).subscribe(
+            (response: any) => {
+              const reader = new FileReader();
+              reader.readAsDataURL(response);
+              reader.onloadend = () => {
+                // Save the image URL to the profilePictureUrl property
+                this.profilePictureUrl = reader.result as string;
+              };
+            }
+          );
+        }
       }
-    )
-    
-   
+    );
   }
   
-  onSelectFile(event:any) {
+  // Handle file selection for profile picture update
+  onSelectFile(event: any) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader()
-      reader.readAsDataURL(event.target.files[0])
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
       reader.onloadend = () => {
-        this.profilePictureUrl = reader.result as string
+        // Update the profilePictureUrl with the selected image URL
+        this.profilePictureUrl = reader.result as string;
       };
       const files: File[] = event.target.files;
       this.selectedFiles = files;
     }
   }
 
-  changeProfilePic(){
-    if(this.selectedFiles.length>0){
-      const file = this.selectedFiles[0]
-      this.imagesService.UploadImage(file)
-      .subscribe(
-        (response:any) => {
-          const url = response.image;
-          const fileName = url.substring(url.lastIndexOf("/") + 1);
-          console.log(fileName); 
-          const data = {
-            profile_picture : fileName
-          }
+// Update the profile picture
+changeProfilePic() {
+if (this.selectedFiles.length > 0) {
+  const file = this.selectedFiles[0];
+
+  // Upload the selected image file
+  this.imagesService.UploadImage(file).subscribe(
+    (response: any) => {
+      const url = response.image;
+      const fileName = url.substring(url.lastIndexOf("/") + 1);
+      console.log(fileName);
+
+      const data = {
+        profile_picture: fileName
+      };
+
+      // Display success message for profile picture update
+      Swal.fire({
+        icon: 'success',
+        title: 'Votre photo a été mise à jour',
+        showConfirmButton: false,
+        timer: 1500
+      });
+
+        // Update the profile picture in the backend
+      this.service.updateProfilPicture(sessionStorage.getItem('userId'), data).subscribe(
+        (response: any) => {
+          console.log(response.message);
+
+          // Display success message for backend update
           Swal.fire({
             icon: 'success',
-            title: 'Votre photo a été mis a jour',
+            title: 'Votre photo a été mise à jour',
             showConfirmButton: false,
             timer: 1500
-          })
-          this.service.updateProfilPicture(sessionStorage.getItem('userId'),data)
-          .subscribe(
-            (response:any) => {
-              console.log(response.message)
-              Swal.fire({
-                icon: 'success',
-                title: 'Votre photo a été mis a jour',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              
-            }       
-          )
-          location.reload(); // reload the page after successful update
-        }
+          });
+          }
+        );
 
-      )
-
-    }
-
+        this.selectedFiles = []; // Reset the selected files array
+        location.reload(); // Reload the page after successful update
+      }
+    );
   }
+}
   
   onupdateuser( updateform: NgForm ):void
   { 
@@ -166,7 +186,9 @@ export class ProfileComponent {
           showConfirmButton: false,
           timer: 1500
         })
-        this.router.navigate(['/profile'])
+        
+        updateform.reset(); // Reset the selected files array
+        location.reload(); // Reload the page after successful update
       
       }
       ,(error: HttpErrorResponse) =>

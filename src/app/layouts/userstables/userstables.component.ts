@@ -19,54 +19,49 @@ export class User {
 
 
 export class UserstablesComponent {
-  UsersArray: any[] = [];
-  isResultLoaded = false;
-  selectedUser: any = {};
-  showUpdateForm: boolean = false;
+  UsersArray: any[] = []; // Array to store the users
+  isResultLoaded = false; // Flag to indicate if the result is loaded
+  selectedUser: any = {}; // Variable to store the selected user for update
+  showUpdateForm: boolean = false; // Flag to control the visibility of the update form
 
-
-
-  constructor(private http: HttpClient,private service: AuthService) {this.getAllUsers();}
+  constructor(private http: HttpClient, private service: AuthService) {
+    this.getAllUsers(); // Call the getAllUsers function to fetch all users on initialization
+  }
 
   getAllUsers() {
     this.service.getAll()
       .subscribe((resultData: any) => {
-        this.isResultLoaded = true;
+        this.isResultLoaded = true; // Set the flag to indicate that the result is loaded
         console.log(resultData.data);
-        this.UsersArray = resultData.data;
+        this.UsersArray = resultData.data; // Assign the fetched user data to the UsersArray
       });
   }
+
   deleteUser(userId: number) {
     this.service.delete(userId)
       .subscribe(
-        (response: any) => 
-        {
+        (response: any) => {
           Swal.fire({
             icon: 'success',
-            title: 'ce compte a été supprimer',
+            title: 'ce compte a été supprimer', // Success message for successful deletion
             showConfirmButton: false,
             timer: 1500
-          })
-          this.getAllUsers()
+          });
+          this.getAllUsers(); // Refresh the user list after deletion
+        },
+        (error: HttpErrorResponse) =>
+          alert(error.message)
+      );
+  }
 
-        },(error: HttpErrorResponse) =>
-        alert(error.message)
-    );
-      
-        // Update the UsersArray to reflect the deletion
-        
-     
-  }
- 
   cancelUpdate() {
-    this.showUpdateForm = false;
-    this.getAllUsers()
+    this.showUpdateForm = false; // Hide the update form
+    this.getAllUsers(); // Refresh the user list
   }
-  
 
   showUpdate(user: any) {
-    this.selectedUser = user;
-    this.showUpdateForm = true;
+    this.selectedUser = user; // Set the selected user for update
+    this.showUpdateForm = true; // Show the update form
   }
 
   updateAdmin() {
@@ -74,15 +69,16 @@ export class UserstablesComponent {
       .subscribe((resultData: any) => {
         Swal.fire({
           icon: 'success',
-          title: 'ce compte a été modifié',
+          title: 'ce compte a été modifié', // Success message for successful update
           showConfirmButton: false,
           timer: 1500
-        })
+        });
         console.log(resultData);
-        this.showUpdateForm = false;
-        this.getAllUsers();
+        this.showUpdateForm = false; // Hide the update form
+        this.getAllUsers(); // Refresh the user list
       });
   }
+
 
 
 }

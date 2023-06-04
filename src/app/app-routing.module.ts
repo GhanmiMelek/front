@@ -12,15 +12,15 @@ import { ContactComponent } from './layouts/contact/contact.component';
 import { UserstablesComponent } from './layouts/userstables/userstables.component';
 import { AdminheaderComponent } from './layouts/adminheader/adminheader.component';
 import { AdminprofileComponent } from './layouts/adminprofile/adminprofile.component';
-import { ContectadminComponent } from './layouts/contectadmin/contectadmin.component';
 import { ContacttableComponent } from './layouts/contacttable/contacttable.component';
-import { ChartComponent } from './layouts/chart/chart.component';
-import { AdminchartComponent } from './layouts/adminchart/adminchart.component';
 import { HomeComponent } from './layouts/home/home.component';
 import { VerifyemailComponent } from './layouts/verifyemail/verifyemail.component';
 import { RHComponent } from './layouts/rh/rh.component';
 import { FinanceComponent } from './layouts/finance/finance.component';
 import { AffiliationComponent } from './layouts/affiliation/affiliation.component';
+import { RHadminComponent } from './layouts/rhadmin/rhadmin.component';
+import { FinanceadminComponent } from './layouts/financeadmin/financeadmin.component';
+import { AffiliationadminComponent } from './layouts/affiliationadmin/affiliationadmin.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -35,15 +35,15 @@ const routes: Routes = [
   { path: 'userstables', component: UserstablesComponent },
   { path: 'adminheader', component: AdminheaderComponent },
   { path: 'adminprofile', component: AdminprofileComponent },
-  { path: 'Contactadmin', component: ContectadminComponent },
   { path: 'contacttable', component: ContacttableComponent },
-  { path: 'chart', component: ChartComponent },
-  { path: 'adminchart', component: AdminchartComponent },
   { path: 'home', component: HomeComponent },
   { path: 'verifyemail', component: VerifyemailComponent },
   { path: 'RH', component: RHComponent },
   { path: 'finance', component: FinanceComponent },
-  { path: 'affiliation', component: AffiliationComponent }
+  { path: 'affiliation', component: AffiliationComponent },
+  { path: 'RHadmin', component: RHadminComponent },
+  { path: 'financeadmin', component: FinanceadminComponent },
+  { path: 'affiliationadmin', component: AffiliationadminComponent }
 
  
 

@@ -9,7 +9,7 @@
       </ol>
     </nav>
   </div><!-- End Page Title -->
-  <div class="lol">
+  <div id="Tableau">
 <table >
 <thead>
   <tr>
@@ -31,9 +31,10 @@
       <td>{{contacts.subject}}</td>
       <td>{{contacts.message}}</td>
       <td>
-      <button class="reply-button">
-        <i class="fa fa-reply"></i>
-      </button>
+        <button class="reply-button" (click)="openGmail()">
+          <i class="fa fa-reply"></i>
+        </button>
+        
       <button *ngIf="contacts.resolved === 0" (click)="resolveContact(contacts.id)">
         <i class="fa fa-check"></i>
       </button>
@@ -47,9 +48,5 @@
 </tbody>
 </table>
 </div>
-  
-   
-    
-  
-  
+
 
